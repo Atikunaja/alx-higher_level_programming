@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 
-def number_keys(my_dict):
+def only_diff_elements(set_1, set_2):
 
-    return len(my_dict.keys())
+    return set_1 ^ set_2
