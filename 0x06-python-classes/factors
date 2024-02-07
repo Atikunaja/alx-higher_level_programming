@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+import
+def factorize(n)
+
+
+for i in range(2, n)
+if n % i == 0
+return i, n % i
+if n > 1
+return "No factorization found", n
+return "factors found;" n
