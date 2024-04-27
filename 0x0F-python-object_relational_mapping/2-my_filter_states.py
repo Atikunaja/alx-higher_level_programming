@@ -1,35 +1,19 @@
 #!/usr/bin/python3
-
+"""Script lists all states from database hbtn_0e_0_usa
+Takes three arguments:
+    mysql username
+    mysql password
+    database name
+Connects to default host (localhost) and port (3306)
 """
-    A script that lists all states from the database hbtn_0e_0_usa
-        starting with capital letter N
-            Username, password and database names are given as user args
-            """
 
 
-            import sys
-            import MySQLdb
-
-
-            if __name__ == '__main__':
-                db = MySQLdb.connect(user=sys.argv[1],
-                                         passwd=sys.argv[2],
-                                                                  db=sys.argv[3],
-                                                                                           host='localhost',
-                                                                                                                    port=3306)
-
-                                                                                                                        cursor = db.cursor()
-
-                                                                                                                            sql = """ SELECT * FROM states
-                                                                                                                                      WHERE name LIKE BINARY '{}'
-                                                                                                                                                ORDER BY id ASC """.format(sys.argv[4])
-
-                                                                                                                                                    cursor.execute(sql)
-
-                                                                                                                                                        data = cursor.fetchall()
-
-                                                                                                                                                            for row in data:
-                                                                                                                                                                    print(row)
-
-                                                                                                                                                                        cursor.close()
-                                                                                                                                                                            db.close()
+if __name__ == "__main__":
+    from sys import argv
+    import MySQLdb
+    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
+    c = db.cursor()
+    c.execute("""SELECT * FROM states ORDER BY states.id ASC""")
+        rows = c.fetchall()                                         for row in rows:
+            print(row)                                              c.close()
+        db.close()
