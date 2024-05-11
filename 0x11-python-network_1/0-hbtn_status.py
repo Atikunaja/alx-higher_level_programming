@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""Fetches https://intranet.hbtn.io/status."""
-import urllib.request
-
-
+"""script for testing status of web pages
+"""
 if __name__ == "__main__":
-    request = urllib.request.Request("https://intranet.hbtn.io/status")
-    with urllib.request.urlopen(request) as response:
-        body = response.read()
-        print("Body response:")
-        print("\t- type: {}".format(type(body)))
-        print("\t- content: {}".format(body))
-        print("\t- utf8 content: {}".format(body.decode("utf-8")))
+    import urllib.request
+    url = "https://intranet.hbtn.io/status"
+    with urllib.request.urlopen(url) as response:
+        bytes_content = response.read()
+        content = bytes_content.decode('utf-8')
+        print_str = '''Body response:
+\t- type: {}
+\t- content: {}
+\t- utf8 content: {}'''.format(type(bytes_content), bytes_content, content)
+        print(print_str)
